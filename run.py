@@ -79,6 +79,16 @@ def calculate_surplus_data(sales_row):
 
     return surplus_data
 
+def update_surplus_worksheet(data):
+    """
+    This function updates the worksheet with the data derived from subtracting the stock from the sales.
+    Meaning, it adds a new row containing the data derived from the calculate_surplus_data function
+    """
+    print("Updating surplus worksheet...\n")
+    surplus_worksheet = SHEET.worksheet("surplus")
+    surplus_worksheet.append_row(data)
+    print("Surplus worksheet updated successfully!\n")
+
 
 def main():
     """
@@ -89,7 +99,7 @@ def main():
 
     update_sales_worksheet(sales_data)
     new_surplus_data = calculate_surplus_data(sales_data)
-    print(new_surplus_data)
+    update_surplus_worksheet(new_surplus_data)
 
 print("Welcome to Love Sandwishes Data Automation")
 main()
